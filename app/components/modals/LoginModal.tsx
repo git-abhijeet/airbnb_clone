@@ -35,17 +35,17 @@ const LoginModal = () => {
             ...data,
             redirect: false,
         })
-        .then((callback) => {
-            setIsLoading(false);
-            if(callback?.ok) {
-                toast.success('Logged in');
-                router.refresh();
-                loginModal.onClose();
-            }
-            if(callback?.error) {
-                toast.error(callback.error)
-            }
-        })
+            .then((callback) => {
+                setIsLoading(false);
+                if (callback?.ok) {
+                    toast.success('Logged in');
+                    router.refresh();
+                    loginModal.onClose();
+                }
+                if (callback?.error) {
+                    toast.error(callback.error)
+                }
+            })
 
     }
 
@@ -60,8 +60,8 @@ const LoginModal = () => {
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr />
-            <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => { }} />
-            <Button outline label="Continue with GitHub" icon={AiFillGithub} onClick={() => { }} />
+            <Button outline label="Continue with Google" icon={FcGoogle} onClick={() => signIn('google')} />
+            <Button outline label="Continue with GitHub" icon={AiFillGithub} onClick={() => signIn('github')} />
             <div className="mt-4 font-light text-center text-neutral-500">
                 <div className="flex flex-row items-center justify-center gap-2">
                     <div>

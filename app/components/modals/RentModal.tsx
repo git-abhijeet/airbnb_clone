@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useState } from "react";
-import { FieldValue, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import useRentModal from "@/app/hooks/useRentModal";
 import Modal from "./Modal";
@@ -33,7 +33,7 @@ const RentModal = () => {
     const [step, setStep] = useState(STEPS.CATEGORY);
     const [isLoading, setIsLoading] = useState(false);
 
-    const { register, handleSubmit, setValue, watch, formState: { errors, }, reset } = useForm<FieldValue>({
+    const { register, handleSubmit, setValue, watch, formState: { errors, }, reset } = useForm<FieldValues>({
         defaultValues: {
             category: '',
             location: null,
@@ -74,7 +74,7 @@ const RentModal = () => {
         setStep((value) => value + 1);
     }
 
-    const onSubmit: SubmitHandler<FieldValue> = (data) => {
+    const onSubmit: SubmitHandler<FieldValues> = (data) => {
         if(step != STEPS.PRICE) {
             return onNext();
         }
